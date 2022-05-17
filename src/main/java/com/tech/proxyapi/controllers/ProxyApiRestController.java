@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tech.proxyapi.dtos.PersonDto;
 import com.tech.proxyapi.services.ProxyApiService;
 
+
 @RestController
 @RequestMapping("/swapi-proxy")
 public class ProxyApiRestController {
@@ -19,7 +20,7 @@ public class ProxyApiRestController {
 	ProxyApiService proxyApiService;
 	
 	@GetMapping("/person-info")
-	public String getPersonInfo(@RequestParam String name ) throws IOException {
+	public PersonDto getPersonInfo(@RequestParam String name ) throws IOException {
 	
 		
 		return proxyApiService.extractingPersonInfo(name);

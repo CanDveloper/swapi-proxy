@@ -2,23 +2,29 @@ package com.tech.proxyapi.services;
 
 import java.io.IOException;
 
-import org.springframework.web.client.RestTemplate;
+import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.tech.proxyapi.dtos.PersonDto;
+import com.tech.proxyapi.utils.JsonMapper;
+import com.tech.proxyapi.utils.ProxyHandler;
 
+
+
+@Service
 public class ProxyApiServiceImpl implements ProxyApiService{
 
 	@Override
-	public String extractingPersonInfo(String name)
-			throws JsonMappingException, JsonProcessingException, IOException {
+	public PersonDto extractingPersonInfo(String name) throws IOException {
 		
-		String uriRequest = "https://swapi.dev/api/" + "people?search=" + name;
-		RestTemplate restTemplate = new RestTemplate();
-		String result = restTemplate.getForObject(uriRequest, String.class);
+		ProxyHandler proxyHandler = new ProxyHandler();
+		JsonMapper jsonMapper = new JsonMapper();
 		
-		return result;
+		String jsonResult = proxyHandler.SwapiPersonHandler(name);
+		
+		
+		
+		return jsonMapper.JsonToPersonDtoMapper(jsonResult);
 	}
 
 }
+                                               

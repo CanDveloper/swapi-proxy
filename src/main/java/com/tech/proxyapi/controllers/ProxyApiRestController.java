@@ -26,7 +26,6 @@ public class ProxyApiRestController {
 
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping("/person-info")
-//	@RequestMapping(value = "/person-info", method = RequestMethod.GET)
 	public PersonDto getPersonInfo(@RequestParam String name) throws IOException, EmptySearchException {
 
 		return proxyApiService.extractingPersonInfo(name);

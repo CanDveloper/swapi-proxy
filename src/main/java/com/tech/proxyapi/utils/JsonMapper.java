@@ -38,7 +38,7 @@ public class JsonMapper {
 
 		if (resultsNode == null) {
 
-			throw new EmptySearchException("No hay resultado");
+			throw new EmptySearchException("No existe el personaje indicado");
 		} else {
 
 			personDto.setName(resultsNode.path("name").asText());

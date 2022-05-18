@@ -39,4 +39,5 @@ public class ProxyApiServiceTest {
 
 		assertTrue(actualMessage.contains(expectedMessage));
 	}
+
 }

@@ -5,26 +5,22 @@ import java.io.IOException;
 import org.springframework.stereotype.Service;
 
 import com.tech.proxyapi.dtos.PersonDto;
+import com.tech.proxyapi.exceptions.EmptySearchException;
 import com.tech.proxyapi.utils.JsonMapper;
 import com.tech.proxyapi.utils.ProxyHandler;
 
-
-
 @Service
-public class ProxyApiServiceImpl implements ProxyApiService{
+public class ProxyApiServiceImpl implements ProxyApiService {
 
 	@Override
-	public PersonDto extractingPersonInfo(String name) throws IOException {
-		
+	public PersonDto extractingPersonInfo(String name) throws IOException, EmptySearchException {
+
 		ProxyHandler proxyHandler = new ProxyHandler();
 		JsonMapper jsonMapper = new JsonMapper();
-		
+
 		String jsonResult = proxyHandler.SwapiPersonHandler(name);
-		
-		
-		
+
 		return jsonMapper.JsonToPersonDtoMapper(jsonResult);
 	}
 
 }
-                                               
